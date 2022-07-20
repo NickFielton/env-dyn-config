@@ -1,7 +1,7 @@
 # env-dyn-config
 
-env-dyn-config is simple approach for dynamic configuration files.
-It breaks down a configuration to the base and the specifics for each environment specific.
+env-dyn-config is simple approach for **dynamic configuration** files.
+It breaks down the configuration depending on the **environment** distinguiting the **base** from the env's **specifics**.
 
 ## Install
 
@@ -15,17 +15,33 @@ Or installing with yarn? `yarn add env-dyn-config`
 
 ## Usage
 
+### 1. Environment
+
 Since this uses the [dotenv](https://www.npmjs.com/package/dotenv) package, create a `.env` file in the root of your project:
 
 ``` .env
 NODE_ENV="development"
 ```
 
-And your config file:
+### 2. env-dyn-config intialization
+
+Add the following file to initialize the module.
+
+``` ts
+/// env-dyn-config.config.ts
+import init from "env-dyn-config";
+
+export default init();
+```
+
+### 3. Your first config
+
+Add your config file.
 
 ``` ts
 /// config.ts
-import { environments, fusion } from "env-dyn-config";
+import edc from "./env-dyn-config.config";
+const { combine, environments } = edc;
 
 const specific = {
     [environments.production]: {
@@ -33,46 +49,19 @@ const specific = {
     }
 }
 
-export default fusion({
+export default combine({
     property: "for devs only"
 }, specific);
 ```
 
-NB: as early as possible in your application, import / configure env-dyn-config. Once imported, the returned value of each exported fusion remains the same (since its cached).
+NB: as early as possible in your application, import / configure env-dyn-config. Once imported, the returned value of each exported combine remains the same (since its cached).
 
-## Customize
-
-Customisation happends at the initialization of the module by giving an array of the environment names.
-
-``` ts
-/// config.ts
-import init from "env-dyn-config";
-const { environments, fusion } = init(["development", "test", "production"]);
-```
-
-The first value of the array is the default / base configuration.
-After any other import, you can carry with the previously shown import method.
-
-## Example
-
-- [Typescript and custom envs](#Example)
+For more **examples** see repo [env-dyn-config-examples](https://github.com/NickFielton/env-dyn-config-examples.git)
 
 ## Documentation
 
-This package exposes:
+This package exposes a function, once runned, returning:
 
 - `environments` the list of environment names
 - `ENV` the current environment recognized by dotenv
 - `fusion` a method to merge configurations
-
-## Options
-
-### `environments`
-
-env-dyn-config can accept a string[] with the name of your environments.
-
-## Todo
-
-- [x] Intellisence on environments
-- [ ] Intellisence on dynamic environments
-- [x] Prepare as module

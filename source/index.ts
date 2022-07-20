@@ -2,6 +2,8 @@
 import * as merge from 'deepmerge'
 // Configure environment
 import 'dotenv/config'
+// Import types
+import { Options, Returning } from './index.d'
 // Import environments
 import EnvironmentNames from './env-names.type'
 
@@ -12,16 +14,6 @@ if (!Object.keys(EnvironmentNames).length) {
     )
 }
 
-// Define config type
-type Options = {
-    environments: string[]
-}
-// Define return type
-type Returning = {
-    environments: { [key in EnvironmentNames]?: any }
-    ENV: string
-    combine<T>(base: T, specific: { [key: string]: Partial<T> }): T
-}
 // Define default environments
 const DEFAULT: Options = {
     environments: [...Object.keys(EnvironmentNames)],
