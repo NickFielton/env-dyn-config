@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index no-env given 1`] = `
+Object {
+  "default": Object {
+    "baseUrl": "https://dev.example.com",
+    "endpoint": "/api/main",
+    "general": "Only for devs",
+  },
+}
+`;
+
+exports[`index nominal-development 1`] = `
+Object {
+  "default": Object {
+    "baseUrl": "https://dev.example.com",
+    "endpoint": "/api/main",
+    "general": "Only for devs",
+  },
+}
+`;
+
+exports[`index nominal-production 1`] = `
+Object {
+  "default": Object {
+    "baseUrl": "https://example.com",
+    "endpoint": "/api/main",
+    "general": "Only for clients",
+    "shared": "this property is shared with prod only",
+  },
+}
+`;
+
+exports[`index nominal-test 1`] = `
+Object {
+  "default": Object {
+    "baseUrl": "https://dev.example.com",
+    "endpoint": "/api/main",
+    "general": "Only for tests",
+  },
+}
+`;
