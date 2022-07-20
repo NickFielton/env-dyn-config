@@ -1,6 +1,6 @@
-# dyn-config
+# env-dyn-config
 
-Dyn-Config is simple approach for dynamic configuration files.
+env-dyn-config is simple approach for dynamic configuration files.
 It breaks down a configuration to the base and the specifics for each environment specific.
 
 ## Install
@@ -8,10 +8,10 @@ It breaks down a configuration to the base and the specifics for each environmen
 Recommended to install locally
 
 ``` bash
-npm install dyn-config --save
+npm install env-dyn-config --save
 ```
 
-Or installing with yarn? `yarn add dyn-config`
+Or installing with yarn? `yarn add env-dyn-config`
 
 ## Usage
 
@@ -25,7 +25,7 @@ And your config file:
 
 ``` ts
 /// config.ts
-import { environments, fusion } from "dyn-config";
+import { environments, fusion } from "env-dyn-config";
 
 const specific = {
     [environments.production]: {
@@ -38,7 +38,7 @@ export default fusion({
 }, specific);
 ```
 
-NB: as early as possible in your application, import / configure dyn-config. Once imported, the returned value of each exported fusion remains the same (since its cached).
+NB: as early as possible in your application, import / configure env-dyn-config. Once imported, the returned value of each exported fusion remains the same (since its cached).
 
 ## Customize
 
@@ -46,7 +46,7 @@ Customisation happends at the initialization of the module by giving an array of
 
 ``` ts
 /// config.ts
-import init from "dyn-config";
+import init from "env-dyn-config";
 const { environments, fusion } = init(["development", "test", "production"]);
 ```
 
@@ -69,10 +69,10 @@ This package exposes:
 
 ### `environments`
 
-Dyn-config can accept a string[] with the name of your environments.
+env-dyn-config can accept a string[] with the name of your environments.
 
 ## Todo
 
 - [x] Intellisence on environments
-- [x] Intellisence on dynamic environments
-- [ ] Prepare as module
+- [ ] Intellisence on dynamic environments
+- [x] Prepare as module

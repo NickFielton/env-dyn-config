@@ -1,5 +1,5 @@
 {
-  "name": "dyn-config",
+  "name": "env-dyn-config",
   "version": "1.0.0",
   "description": "Dynamic config files depending on env",
   "main": "source/index.ts",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/NickFielton/dyn-config.git"
+    "url": "git+ssh://git@github.com/NickFielton/env-dyn-config.git"
   },
   "keywords": [
     "dyn",
@@ -21,9 +21,9 @@
   "author": "Nick Fielton <nick.fielton@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NickFielton/dyn-config/issues"
+    "url": "https://github.com/NickFielton/env-dyn-config/issues"
   },
-  "homepage": "https://github.com/NickFielton/dyn-config#readme",
+  "homepage": "https://github.com/NickFielton/env-dyn-config#readme",
   "dependencies": {
     "deepmerge": "^4.2.2",
     "dotenv": "^16.0.1"

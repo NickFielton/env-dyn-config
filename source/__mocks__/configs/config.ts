@@ -1,5 +1,5 @@
 // Import module
-import dyn from './dyn-config.config'
+import dyn from './env-dyn-config.config'
 
 // Destructure dyn
 const { combine, environments } = dyn
