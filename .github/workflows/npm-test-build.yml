@@ -1,37 +1,38 @@
 name: NodeJS with Typescript
 
 on:
-  push:
-    branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
+    push:
+        branches: ['dev']
+    pull_request:
+        branches: ['dev']
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-    
-    steps:
-    - uses: actions/checkout@v3
+        strategy:
+            matrix:
+                node-version: [12.x, 14.x, 16.x]
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - name: npm install, test and build
-      run: |
-        npm install
-        npm run test
-        npm run build
-        
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: '*.xml'               # Path to test results
-        reporter: jest-junit        # Format of test results
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Make clean-install
+              run: |
+                  npm clean-install
+
+            - name: Run tests
+                  npm run test:ci
+
+            - name: Report tests
+              uses: dorny/test-reporter@v1
+              if: success() || failure() # run this step even if previous step failed
+              with:
+                  name: JEST Tests # Name of the check run which will be created
+                  path: '*.xml' # Path to test results
+                  reporter: jest-junit # Format of test results

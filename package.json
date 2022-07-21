@@ -1,6 +1,6 @@
 {
   "name": "env-dyn-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dynamic config files depending on env",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,8 @@
     "prepublish": "npm run build",
     "build": "tsc",
     "test": "jest --coverage",
-    "test:update": "npm run test -- -u"
+    "test:update": "npm run test -- -u",
+    "test:ci": "jest --ci --reporters='default' --reporters='./.github/reports/github-actions-reporter'"
   },
   "repository": {
     "type": "git",
