@@ -32,8 +32,4 @@ describe('index', () => {
         // Import the config
         expect(() => require('./__mocks__/configs/config')).toThrow()
     })
-
-    test('fail-100%', () => {
-        expect(true).toBe(false)
-    })
 })
